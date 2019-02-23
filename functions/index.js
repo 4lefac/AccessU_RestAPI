@@ -1,12 +1,12 @@
 const functions = require('firebase-functions');
 const express = require('express');
-const entranceRoutes = require('./api/routes/entrances');
+const entranceRoutesV1 = require('./api/v1/routes/entrances');
 
 const app = express();
 /*
  * 
  */
-app.use('/entrances', entranceRoutes);
+app.use('/api/v1/entrances', entranceRoutesV1);
 
 
 /*
