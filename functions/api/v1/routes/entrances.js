@@ -3,11 +3,12 @@ const router = express.Router();
 const admin = require('firebase-admin');
 const functions = require('firebase-functions');
 
-admin.initializeApp(functions.config().firebase);
+const firebase = admin.initializeApp(functions.config().firebase);
 
-var db = admin.firestore();
+var db = firebase.firestore();
 var entrances = new Array();
 var entrancesRef = db.collection('entrances');
+
 /*
  * get request
  */
@@ -27,6 +28,7 @@ router.get('/', (req, res, next) => {
     res.status(200).json(entrances);
     entrances = [];
 });
+
 
 /*
  * return a certain id to the user
