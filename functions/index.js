@@ -1,12 +1,15 @@
 const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+const firebase = admin.initializeApp(functions.config().firebase);
+
 const express = require('express');
-const entranceRoutesV1 = require('./api/v1/routes/entrances');
+const locationsRoutesV1 = require('./api/v2/routes/locations');
 
 const app = express();
 /*
  * 
  */
-app.use('/api/v1/entrances', entranceRoutesV1);
+app.use('/api/v2', locationsRoutesV1);
 
 
 /*
