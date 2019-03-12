@@ -1,17 +1,19 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+
+//initializing app here so you dont have to do it any where else
 const firebase = admin.initializeApp(functions.config().firebase);
 
 const express = require('express');
-const locationsRoutesV1 = require('./api/v2/routes/locations');
-
+const locationsRoutesV2 = require('./api/v2/routes/locations');
+const imagesRoutesV2 = require('./api/v2/routes/images');
 const app = express();
 /*
  * 
  */
-app.use('/api/v2', locationsRoutesV1);
+app.use('/api/v2', locationsRoutesV2);
 
-
+app.use('/api/v2/images', imagesRoutesV2);
 /*
  * handle error if api is called incorectly
  */
