@@ -2,7 +2,12 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 
 //initializing app here so you dont have to do it any where else
-const firebase = admin.initializeApp(functions.config().firebase);
+//const firebase = admin.initializeApp(functions.config().firebase);
+var serviceAccount = require('./ServiceAccountKey.json');
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+});
 
 const express = require('express');
 const locationsRoutesV2 = require('./api/v2/routes/locations');
@@ -34,5 +39,5 @@ app.use((error, req, res, next) => {
         }
     });
 });
-
+//managing rest endpoint calls
 exports.app = functions.https.onRequest(app);
