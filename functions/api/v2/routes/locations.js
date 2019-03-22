@@ -64,14 +64,14 @@ router.get('/locations', (req, res, next) => {
             res.status(200).json(result);
         })
         .catch((err) => {
-            res.status(400).json({
+            res.status(404).json({
                 message: "error getting entrances from server",
                 error: err,
             });
         });
     })
     .catch((err) => {
-        res.status(400).json({
+        res.status(404).json({
             message: "error getting locations from server",
             error: err,
         });
@@ -87,6 +87,7 @@ router.get('/entrances/:entranceID', (req, res, next) => {
                 //404 meaning that the file was not found
                 res.status(404).json({
                     message: 'No Such Document',
+                    error: 'document not found'
                 });
             } else {
                 var tempEntrance = doc.data();
@@ -168,17 +169,18 @@ router.post('/entrance', (req,res,next)=>{
                 //404 meaning that the file was not found
                 res.status(404).json({
                     message: 'locationID is incorrect',
+                    error: 'file does not exist'
                 });
             }  else {
                 //adding entranceRef to firebase database
                 entrancesRef.add(entrance).then(ref => {
                     res.status(200).json({
-                        message: 'Successfully added document',
+                        success: 'Successfully added document',
                         id: ref.id
                     });
                 })
                 .catch((err) => {
-                res.status(400).json({
+                res.status(404).json({
                     message: "error adding the entrance",
                     error : err,
                 })
@@ -187,7 +189,7 @@ router.post('/entrance', (req,res,next)=>{
             }
     })
     .catch((err) => {
-        res.status(400).json({
+        res.status(404).json({
             message : "error getting location reference",
             error : err
         })
@@ -211,10 +213,10 @@ router.post('/location', (req,res)=>{
     locationsRef.add(location).then(ref => {
         res.status(200).json({
             message: 'Successfully added document',
-            locationID: ref.id
+            id: ref.id
         });
       }).catch((err) => {
-        res.status(400).json({
+        res.status(404).json({
             message: "error adding the location",
             error : err,
         })
