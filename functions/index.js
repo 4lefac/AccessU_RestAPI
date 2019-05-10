@@ -12,6 +12,7 @@ admin.initializeApp({
 const express = require('express');
 const locationsRoutesV2 = require('./api/v2/routes/locations');
 const imagesRoutesV2 = require('./api/v2/routes/images');
+const authV1 = require('./api/v2/routes/auth');
 const app = express();
 /*
  * 
@@ -19,6 +20,8 @@ const app = express();
 app.use('/api/v2', locationsRoutesV2);
 
 app.use('/api/v2/images', imagesRoutesV2);
+
+app.use('/api/v2/auth', authV1);
 /*
  * handle error if api is called incorectly
  */
