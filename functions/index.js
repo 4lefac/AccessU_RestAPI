@@ -22,6 +22,8 @@ app.use('/api/v2', locationsRoutesV2);
 app.use('/api/v2/images', imagesRoutesV2);
 
 app.use('/api/v2/auth', authV1);
+
+app.use('/api/v2/users', usersV1);
 /*
  * handle error if api is called incorectly
  */
