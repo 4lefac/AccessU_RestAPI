@@ -49,10 +49,6 @@
   }
   ## Location json
   {
-    "keywords": [
-        "Ramp accessible",
-        "Power door"
-    ],
     "name": "Baker Hall West",
     "description": "This is a interesting location to be.",
     "coordinates": {
@@ -62,19 +58,6 @@
     "imageUri": "default url unless image is updated through post request of image",
     "id": "psnDpb1YYHgrHQIM7hTU",
     "entrances": [/*entrances objects will go here as seen from entrances json examples *\]
-   }
-  ## success json
-    this will vary on what your posting to the database but most of the time you will a success and a message.
-    {
-      success: "some message"
-      id: "sometimes you will get this back if you made a post request and added something to the database like an entrace"
-   }
-  ## error json
-   {
-  
-      error: "err posted here:
-      message: "message from me"
-      
    }
    
 
